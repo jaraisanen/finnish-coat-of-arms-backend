@@ -9,6 +9,7 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 
 app.use(BASE_PATH, MunicipalityRoutes)
+// Use trust proxy to make rateLimiter work behind Heroku
 app.set('trust proxy', 1)
 
 const limiter = rateLimit({
@@ -28,4 +29,4 @@ app.use((err: ResponseError, req: Request, res: Response, next: NextFunction) =>
 	})
 })
 
-app.listen(8000, () => console.log('Server listening on port 8000'))
+export { app }
