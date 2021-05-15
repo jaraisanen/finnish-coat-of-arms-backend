@@ -8,8 +8,10 @@
     "outDir": "./dist",
     "noEmit": true,
     "esModuleInterop": true,
+    "rootDir": "."
   },
   "include": [
     "./src/**/*"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

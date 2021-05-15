@@ -19,3 +19,10 @@ TODO
 To run the project head to the project's root and run:
 
 `npm i && npm run dev`
+
+ Database data from Statistics Finland / Tilastokeskus.
+ Downloaded from Statistics Finland API on 13.3.2021 with 
+ license CC BY 4.0 https://creativecommons.org/licenses/by/4.0/deed.en
+ https://data.stat.fi/api/classifications/v2/classifications/kunta_1_20210101/classificationItems?content=data&meta=max&lang=fi 
+ 
+ 

@@ -1,11 +1,12 @@
 {
 	"name": "finnish-coat-of-arms",
 	"version": "0.0.4",
-	"description": "API for the Finnish coat of arms",
+	"description": "Backend for the Finnish coat of arms",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon src/index.ts --ignore-watch node_modules",
-		"build": "tsc && babel src --out-dir dist --extensions .ts",
+		"start": "nodemon src/index.ts --ignore-watch node_modules",
+		"start:server": "ts-node src/index.ts",
+		"build-check": "tsc",
 		"lint": "npx eslint . --ext .ts",
 		"lint:fix": "npx eslint . --fix --ext .ts ",
 		"validation": "tsc && npm run lint",

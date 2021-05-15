@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:13.1
+    container_name: 'db'
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=municipalities
+      - POSTGRES_DB=db
+    ports:
+      - '5432:5432'
+    expose: [5432]
+    volumes:
+      - ./db/municipalities.sql:/docker-entrypoint-initdb.d/municipalities.sql
+    networks:
+      - default
+  backend:
+    image: node:lts-alpine3.10
+    working_dir: /backend
+    command: >
+      sh -c "npm i && npm run build-check && npm run start"
+    ports:
+      - '8000:8000'
+    expose: [8000]
+    volumes:
+      - ./src:/backend/src:rw
+      - ./tests:/backend/tests:rw
+      - ./package.json:/backend/package.json:rw
+      - ./package-lock.json:/backend/package-lock.json:rw
+      - ./tsconfig.json:/backend/tsconfig.json:rw
+      - ./.eslintrc-json:/backend/.eslintrc.json:rw
+      - ./.prettierrc.json:/backend/.prettierrc.json:rw
+    environment:
+      - LOCAL_DB_USER=user
+      - LOCAL_DB_PASSWORD=municipalities
+      - LOCAL_DB=db
+      - LOCAL_DB_PORT=5432
+      - LOCAL_DB_HOST=0.0.0.0
+    depends_on:
+      - db
+    networks:
+      - default
+networks:
+  default:

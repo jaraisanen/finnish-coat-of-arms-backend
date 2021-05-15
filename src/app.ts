@@ -8,6 +8,9 @@ const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 
+app.get(`${BASE_PATH}/`, (req, res) => {
+	res.status(200).json({ status: 200 })
+})
 app.use(BASE_PATH, MunicipalityRoutes)
 // Use trust proxy to make rateLimiter work behind Heroku
 app.set('trust proxy', 1)
