@@ -1,18 +1,19 @@
 import { Pool, QueryResult } from 'pg'
-import dotenv from 'dotenv'
 
-dotenv.config()
+const user = process.env.LOCAL_DB_USER
+const password = process.env.LOCAL_DB_PASSWORD
+const host = process.env.LOCAL_DB_HOST
+const port = Number(process.env.LOCAL_DB_PORT)
+const database = process.env.LOCAL_DB
 
-const user = process.env.DB_USER
-const pw = process.env.DB_PASSWORD
-const host = process.env.DB_HOST
-const port = process.env.DB_PORT
-const db = process.env.DB_DATABASE
-
-const connectionString = `postgres://${user}:${pw}@${host}:${port}/${db}`
+console.log('connection string', user, password, host, port, database)
 
 const pool = new Pool({
-	connectionString,
+	user,
+	password,
+	host,
+	port,
+	database,
 	ssl: {
 		rejectUnauthorized: false,
 	},

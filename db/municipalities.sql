@@ -1,10 +1,3 @@
-/*  
- *  Data from Statistics Finland / Tilastokeskus.
- *  Downloaded from Statistics Finland API on 13.3.2021 with 
- *  license CC BY 4.0 https://creativecommons.org/licenses/by/4.0/deed.en
- *  https://data.stat.fi/api/classifications/v2/classifications/kunta_1_20210101/classificationItems?content=data&meta=max&lang=fi 
- */
- 
 DROP TABLE IF EXISTS municipalities;
 CREATE TABLE municipalities(
   official_id VARCHAR(3) NOT NULL PRIMARY KEY,
