@@ -6,17 +6,20 @@ const host = process.env.LOCAL_DB_HOST
 const port = Number(process.env.LOCAL_DB_PORT)
 const database = process.env.LOCAL_DB
 
-console.log('connection string', user, password, host, port, database)
-
 const pool = new Pool({
 	user,
 	password,
 	host,
-	port,
 	database,
-	ssl: {
-		rejectUnauthorized: false,
-	},
+	port,
 })
 
-export const query = (text: string, params?: never): Promise<QueryResult<unknown>> => pool.query(text, params)
+export const query = async (text: string, params?: never): Promise<QueryResult<unknown>> => {
+	try {
+		return await pool.query(text, params)
+	} catch (error) {
+		setImmediate(() => {
+			throw error
+		})
+	}
+}
