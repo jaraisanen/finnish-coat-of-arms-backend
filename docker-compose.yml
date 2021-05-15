@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   db:
-    image: postgres:13.1
+    image: postgres:12.7-alpine
     container_name: 'db'
     restart: unless-stopped
     environment:
@@ -16,7 +16,7 @@ services:
     networks:
       - default
   backend:
-    image: node:lts-alpine3.10
+    image: node:lts-buster
     working_dir: /backend
     command: >
       sh -c "npm i && npm run build-check && npm run start"
@@ -36,10 +36,11 @@ services:
       - LOCAL_DB_PASSWORD=municipalities
       - LOCAL_DB=db
       - LOCAL_DB_PORT=5432
-      - LOCAL_DB_HOST=0.0.0.0
+      - LOCAL_DB_HOST=db
     depends_on:
       - db
     networks:
       - default
 networks:
   default:
+    driver: "bridge"
