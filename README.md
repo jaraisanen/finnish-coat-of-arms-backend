@@ -59,11 +59,11 @@ Backend now runs on
 
 To run the project's tests head to the project's root and run:
 
-* Without Docker
-`npm run test`
-
 * With Docker
-`docker-compose -f docker-compose-test.yml up`
+`docker-compose -f docker-compose-test.yml up --abort-on-container-exit`
+
+* Without Docker (needs manual connection to db, see PostgreSQL Connection section)
+`npm run test`
 
  #### Database data from Statistics Finland / Tilastokeskus
 
