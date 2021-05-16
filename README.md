@@ -1,6 +1,6 @@
 # finnish-coat-of-arms backend
 
-Backend repository for serving Finnish coat of arms with minimal information. The coat of arms svgs are served from Heroku Cloudinary. Relevant information about the coat of arms store in PostgreSQL in Heroku.
+Backend repository for serving Finnish coat of arms minimal information. Relevant information about the coat of arms stored in PostgreSQL. Github actions used for running automated tests and deploys.
 
 ![Run backend tests](https://github.com/jaraisanen/finnish-coat-of-arms-backend/actions/workflows/tests-run.yml/badge.svg)
 
@@ -8,12 +8,37 @@ Backend repository for serving Finnish coat of arms with minimal information. Th
 
 To run the project locally the following things are required to be installed locally:
 
-* Node v14.16 or later
-* Docker
+* Docker Compose v1.25.0 or newer
+
+  **or** 
+
+* Node v14.16 or newer 
 
 ### PostgreSQL Connection
 
-Environment values need to be changed in docker-compose.yml, if you need connection for other than local db
+If **Docker Compose is not used** for local run: 
+
+Use for example dotenv package with .env file on the project root and specify following environment values with your database credentials: 
+
+* In .env file specify the following with your local db connection values:
+
+```
+LOCAL_DB_USER=your-value-here
+LOCAL_DB_PASSWORD=your-value-here
+LOCAL_DB_HOST=your-value-here
+LOCAL_DB_PORT=v-value-here
+LOCAL_DB=your-value-here
+```
+
+* In db_connection.ts file use:
+
+```javascript
+import dotenv from 'dotenv'
+
+dotenv.config()
+```
+
+* Remember to run the municipalities.sql dump on your db
 
 ### Commands
 
@@ -25,9 +50,24 @@ To run the project head to the project's root and run:
 * With Docker
 `docker-compose -f docker-compose.yml up`
 
+Backend now runs on 
+
+* http://localhost:8000/finnish-coat-of-arms/
+
+
+### Running tests
+
+To run the project's tests head to the project's root and run:
+
+* Without Docker
+`npm run test`
+
+* With Docker
+`docker-compose -f docker-compose-test.yml up`
+
  #### Database data from Statistics Finland / Tilastokeskus
 
- Downloaded from Statistics Finland API on 13.3.2021 with 
+ Generated from Statistics Finland API on 13.3.2021 with 
  license CC BY 4.0 https://creativecommons.org/licenses/by/4.0/deed.en
  https://data.stat.fi/api/classifications/v2/classifications/kunta_1_20210101/classificationItems?content=data&meta=max&lang=en 
  

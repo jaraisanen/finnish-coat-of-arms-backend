@@ -10,7 +10,8 @@
 		"lint": "npx eslint . --ext .ts",
 		"lint:fix": "npx eslint . --fix --ext .ts ",
 		"validation": "tsc && npm run lint",
-		"test": "jest --runInBand --detectOpenHandles --forceExit"
+		"test": "jest --runInBand --detectOpenHandles --forceExit",
+		"ci:run-tests": "sleep 2 && npm run validation && npm run test" 
 	},
 	"author": "Jarno Räisänen",
 	"license": "MIT",
