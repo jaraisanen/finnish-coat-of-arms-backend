@@ -19,7 +19,7 @@ services:
     image: node:lts-buster
     working_dir: /backend
     command: >
-      sh -c "npm ci && npm run test"
+      sh -c "npm ci && npm run build-check && npm run test"
     ports:
       - '8080:8080'
     expose: [8080]
