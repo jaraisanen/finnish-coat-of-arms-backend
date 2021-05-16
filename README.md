@@ -54,7 +54,6 @@ Backend now runs on
 
 * http://localhost:8000/finnish-coat-of-arms/
 
-
 ### Running tests
 
 To run the project's tests head to the project's root and run:
@@ -70,5 +69,4 @@ To run the project's tests head to the project's root and run:
  Generated from Statistics Finland API on 13.3.2021 with 
  license CC BY 4.0 https://creativecommons.org/licenses/by/4.0/deed.en
  https://data.stat.fi/api/classifications/v2/classifications/kunta_1_20210101/classificationItems?content=data&meta=max&lang=en 
- 
  

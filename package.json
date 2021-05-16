@@ -1,6 +1,6 @@
 {
 	"name": "finnish-coat-of-arms",
-	"version": "0.0.4",
+	"version": "0.8.0",
 	"description": "Backend for the Finnish coat of arms",
 	"main": "index.js",
 	"scripts": {
