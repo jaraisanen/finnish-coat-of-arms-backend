@@ -17,7 +17,7 @@ app.set('trust proxy', 1)
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 50, // limit each IP to 100 requests per windowMs
+	max: 50 // limit each IP to 100 requests per windowMs
 })
 
 app.use(limiter)
@@ -28,7 +28,7 @@ app.use((err: ResponseError, req: Request, res: Response, next: NextFunction) =>
 
 	return res.status(err.statusCode).json({
 		status: err.status,
-		message: err.message,
+		message: err.message
 	})
 })
 

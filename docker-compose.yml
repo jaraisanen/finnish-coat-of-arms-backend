@@ -37,6 +37,7 @@ services:
       - LOCAL_DB=db
       - LOCAL_DB_PORT=5432
       - LOCAL_DB_HOST=db
+      - NODE_ENV=local
     depends_on:
       - db
     networks:
