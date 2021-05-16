@@ -1,6 +1,6 @@
 # finnish-coat-of-arms backend
 
-Backend repository for serving Finnish coat of arms minimal information. Relevant information about the coat of arms stored in PostgreSQL. Github actions used for running automated tests and deploys.
+Backend repository for providing Finnish coat of arms information through API. Relevant information about the coat of arms are stored in PostgreSQL. Github actions used for running automated tests and deploys.
 
 ![Run backend tests](https://github.com/jaraisanen/finnish-coat-of-arms-backend/actions/workflows/tests-run.yml/badge.svg)
 
