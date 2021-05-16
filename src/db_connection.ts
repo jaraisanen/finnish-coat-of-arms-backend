@@ -1,25 +1,26 @@
 import { Pool, QueryResult } from 'pg'
 
-const user = process.env.LOCAL_DB_USER
-const password = process.env.LOCAL_DB_PASSWORD
-const host = process.env.LOCAL_DB_HOST
-const port = Number(process.env.LOCAL_DB_PORT)
-const database = process.env.LOCAL_DB
+const env = process.env
+const isLocalEnv = env.NODE_ENV === 'local'
+
+const user = isLocalEnv ? env.LOCAL_DB_USER : env.DB_USER
+const password = isLocalEnv ? env.LOCAL_DB_PASSWORD : env.DB_PASSWORD
+const host = isLocalEnv ? env.LOCAL_DB_HOST : env.DB_HOST
+const port = isLocalEnv ? Number(env.LOCAL_DB_PORT) : Number(env.DB_PORT)
+const database = isLocalEnv ? env.LOCAL_DB : env.DB
 
 const pool = new Pool({
 	user,
 	password,
 	host,
 	database,
-	port,
+	port
 })
 
 export const query = async (text: string, params?: never): Promise<QueryResult<unknown>> => {
 	try {
 		return await pool.query(text, params)
 	} catch (error) {
-		setImmediate(() => {
-			throw error
-		})
+		console.error('Error with DB query: ', error)
 	}
 }

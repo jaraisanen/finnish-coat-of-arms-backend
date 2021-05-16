@@ -29,6 +29,7 @@
         "no-unused-vars": "off",
         "prettier/prettier": [
             "error"
-        ]
+        ],
+        "@typescript-eslint/comma-dangle": ["error", "never"]
     }
 }
