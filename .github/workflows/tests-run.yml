@@ -13,5 +13,5 @@ jobs:
         run: npm ci
       - name: Run tsc and npm run lint
         run: npm run validation
-    # - name: Run integration tests
-    #   run: npm run test
+      - name: Run integration tests
+        run: docker-compose -f docker-compose-test.yml up

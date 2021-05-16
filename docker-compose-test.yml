@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:12.7-alpine
+    container_name: 'db'
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=municipalities
+      - POSTGRES_DB=db
+    ports:
+      - '5442:5442'
+    expose: [5442]
+    volumes:
+      - ./db/municipalities.sql:/docker-entrypoint-initdb.d/municipalities.sql
+    networks:
+      - default
+  backend:
+    image: node:lts-buster
+    working_dir: /backend
+    command: >
+      sh -c "npm ci && npm run test"
+    ports:
+      - '8080:8080'
+    expose: [8080]
+    volumes:
+      - ./src:/backend/src:rw
+      - ./tests:/backend/tests:rw
+      - ./package.json:/backend/package.json:rw
+      - ./package-lock.json:/backend/package-lock.json:rw
+      - ./tsconfig.json:/backend/tsconfig.json:rw
+      - ./.eslintrc-json:/backend/.eslintrc.json:rw
+      - ./.prettierrc.json:/backend/.prettierrc.json:rw
+    environment:
+      - LOCAL_DB_USER=user
+      - LOCAL_DB_PASSWORD=municipalities
+      - LOCAL_DB=db
+      - LOCAL_DB_PORT=5432
+      - LOCAL_DB_HOST=db
+    depends_on:
+      - db
+    networks:
+      - default
+networks:
+  default:
+    driver: "bridge"
