@@ -44,10 +44,10 @@ dotenv.config()
 
 To run the project head to the project's root and run:
 
-* Without Docker
+* Without Docker Compose
 `npm i && npm run dev`
 
-* With Docker
+* With Docker Compose
 `docker-compose -f docker-compose.yml up`
 
 Backend now runs on 
@@ -58,10 +58,10 @@ Backend now runs on
 
 To run the project's tests head to the project's root and run:
 
-* With Docker
+* With Docker Compose
 `docker-compose -f docker-compose-test.yml up --abort-on-container-exit`
 
-* Without Docker (needs manual connection to db, see PostgreSQL Connection section)
+* Without Docker Compose (needs manual connection to db, see PostgreSQL Connection section)
 `npm run test`
 
  #### Database data from Statistics Finland / Tilastokeskus
