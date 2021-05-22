@@ -28,6 +28,7 @@ LOCAL_DB_PASSWORD=your-value-here
 LOCAL_DB_HOST=your-value-here
 LOCAL_DB_PORT=v-value-here
 LOCAL_DB=your-value-here
+NODE_ENV=local
 ```
 
 * In db_connection.ts file use:
