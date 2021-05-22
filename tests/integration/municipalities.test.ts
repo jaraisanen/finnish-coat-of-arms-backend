@@ -3,11 +3,11 @@ import { app } from '../../src/app'
 import { basePath } from '../helpers'
 import { munipalitiesTestData } from '../test-data/Municipalities'
 
-const appWithoutRunLogs = agent(app)
+const server = agent(app)
 
 describe('GET /municipalities', () => {
 	it('should return all municipalities', async done => {
-		await appWithoutRunLogs
+		await server
 			.get(`${basePath}/municipalities`)
 			.expect(200)
 			.then(({ body }) => {
@@ -16,7 +16,7 @@ describe('GET /municipalities', () => {
 			})
 	})
 	it('should return municipalities in correct order', async done => {
-		await appWithoutRunLogs
+		await server
 			.get(`${basePath}/municipalities`)
 			.expect(200)
 			.then(({ body }) => {

@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express'
 import rateLimit from 'express-rate-limit'
 import { ResponseError } from './interfaces/Common'
-import { MunicipalityRoutes } from './routes/MunicipalitiesRoute'
+import { MunicipalityRoutes } from './routes/MunicipalityRoute'
 
 const BASE_PATH = '/finnish-coat-of-arms'
 const app = express()
