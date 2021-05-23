@@ -1,3 +1,4 @@
+name: Dev deploy
 on:
   workflow_dispatch:
 jobs:
