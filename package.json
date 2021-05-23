@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon src/index.ts --ignore-watch node_modules",
-		"start:server": "ts-node src/index.ts",
+		"start:server": "node src/index.ts",
 		"build-check": "tsc",
 		"lint": "npx eslint --ext .ts .",
 		"lint:fix": "npx eslint --fix --ext .ts ./",
