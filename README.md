@@ -2,7 +2,7 @@
 
 Backend repository for providing Finnish coat of arms information through API. Relevant information about the coat of arms are stored in PostgreSQL. Github actions used for running automated tests and deploys.
 
-![Backend tests](https://github.com/jaraisanen/finnish-coat-of-arms-backend/actions/workflows/tests-run.yml/badge.svg) ![Dev deploy](https://github.com/jaraisanen/finnish-coat-of-arms-backend/actions/workflows/dev-deploy.yml/badge.svg)
+![Backend tests](https://github.com/jaraisanen/finnish-coat-of-arms-backend/actions/workflows/tests-run.yml/badge.svg) ![Dev deploy](https://github.com/jaraisanen/finnish-coat-of-arms-backend/actions/workflows/dev-deploy.yml/badge.svg) ![Production deploy](https://github.com/jaraisanen/finnish-coat-of-arms-backend/actions/workflows/prod-deploy.yml/badge.svg)
 
 ## Running locally
 
@@ -65,7 +65,7 @@ To run the project's tests head to the project's root and run:
 * Without Docker Compose (needs manual connection to db, see PostgreSQL Connection section)
 `npm run test`
 
- #### Database data from Statistics Finland / Tilastokeskus
+ ### Database data from Statistics Finland / Tilastokeskus
 
  Generated from Statistics Finland API on 13.3.2021 with 
  license CC BY 4.0 https://creativecommons.org/licenses/by/4.0/deed.en
