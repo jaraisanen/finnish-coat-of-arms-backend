@@ -9,13 +9,17 @@ const host = isLocalEnv ? env.LOCAL_DB_HOST : env.DB_HOST
 const port = isLocalEnv ? Number(env.LOCAL_DB_PORT) : Number(env.DB_PORT)
 const database = isLocalEnv ? env.LOCAL_DB : env.DB
 
-const pool = new Pool({
-	user,
-	password,
-	host,
-	database,
-	port
-})
+const dbUrl = `postgres://${user}:${password}@${host}:${port}/${database}`
+
+const localDbConfs = { user, password, host, database, port }
+const serverDbConfs = {
+	connectionString: dbUrl,
+	ssl: {
+		rejectUnauthorized: false
+	}
+}
+
+const pool = new Pool(isLocalEnv ? localDbConfs : serverDbConfs)
 
 export const query = async (text: string, params?: never): Promise<QueryResult<unknown>> => {
 	try {
